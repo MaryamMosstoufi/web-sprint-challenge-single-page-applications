@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from 'react-router-dom';
-import Header from './components/Header.js';
+
 
 import Form from './components/Form.js';
+import Orders from './components/Orders.js';
+
 import formSchema from './validation/formSchema'
 import axios from 'axios';
 import * as Yup from 'yup'
@@ -39,7 +41,29 @@ const initialFormErrors = {
   instructions: '',
 };
 
-const initialOrders = [];
+const initialOrders = [
+  {
+    name: 'Maryam',
+    size: 'small',
+    sauce: {
+      pesto: false,
+      red: false,
+      white: false,
+      garlic: false,
+      spicy: true,
+      bbq: false,
+    },
+    cheese: {
+      asiago: false,
+      feta: false,
+      gorgonzola: false,
+      mozzarella: true,
+      parmesan: false,
+      ricotta: true,
+    },
+    instructions: 'Please make it crispy'
+  }
+];
 const initialDisabled = true;
 
 const App = () => {
@@ -56,6 +80,7 @@ const App = () => {
     axios.post('https://reqres.in/', newOrder)
       .then(response => {
         setOrders([...orders, response.data])
+        console.log(response.data);
       })
       .catch(error => {
         console.log(error)
@@ -141,6 +166,13 @@ const App = () => {
                 disabled={disabled}
                 errors={formErrors}
               />
+              {
+                orders.map(order => {
+                  return (
+                    <Orders key={order.name} order={order} />
+                  )
+                })
+              }
             </Route>
             <Route path='/'>
               <h1>Welcome to Lambda Eats</h1>
