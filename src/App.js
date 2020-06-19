@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header.js';
 import Form from './components/Form.js';
 import formSchema from './validation/formSchema'
@@ -125,17 +126,27 @@ const App = () => {
   }, [formValues]);
   return (
     <div>
-      <Header />
       <div className='uk-section'>
         <div className='uk-container'>
-          <Form
-            values={formValues}
-            onInputChange={onInputChange}
-            onCheckboxChange={onCheckboxChange}
-            onSubmit={onSubmit}
-            disabled={disabled}
-            errors={formErrors}
-          />
+          <Switch>
+            <Route path="/">
+              <h1>Welcome to Lambda Eats</h1>
+              <Link to={'/order'}>
+                Place Order Online
+              </Link>
+            </Route>
+
+            <Route path="/order" component={Form}>
+              <Form
+                values={formValues}
+                onInputChange={onInputChange}
+                onCheckboxChange={onCheckboxChange}
+                onSubmit={onSubmit}
+                disabled={disabled}
+                errors={formErrors}
+              />
+            </Route>
+          </Switch>
         </div>
       </div>
     </div>
