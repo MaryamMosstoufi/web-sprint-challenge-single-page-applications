@@ -5,7 +5,11 @@ const App = () => {
   return (
     <>
       <h1>Lambda Eats</h1>
-      <Form />
+      <div className='uk-section'>
+        <div className='uk-container'>
+          <Form />
+        </div>
+      </div>
     </>
   );
 };
