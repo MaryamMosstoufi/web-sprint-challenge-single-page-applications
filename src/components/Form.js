@@ -14,7 +14,21 @@ export default function Form(props) {
             <form onSubmit={onSubmit}>
                 <fieldset className='uk-fieldset'>
                     <legend className='uk-legend uk-margin-bottom'>Build Your Own Pizza</legend>
-                    <div className='uk-text-bold uk-text-center uk-margin-small-bottom'>Size</div>
+                    <div className='uk-text-bold uk-text-center uk-margin-small-bottom'>Name</div>
+                    <div className='uk-flex-center uk-grid'>
+                        <div className='uk-width-1-4@s'>
+                            <label>
+                                <input
+                                    className='uk-input'
+                                    type='text'
+                                    name='name'
+                                    onChange={onInputChange}
+                                    checked={values.name}
+                                />
+                            </label>
+                        </div>
+                    </div>
+
                     <div className='uk-flex-center uk-grid'>
                         <div className='uk-width-1-4@s'>
                             <select
@@ -230,6 +244,7 @@ export default function Form(props) {
                         <button disabled={disabled} className='uk-button uk-button-primary'>Add to Order</button>
                     </div>
                     <div className='errors'>
+                        <div>{errors.name}</div>
                         <div>{errors.size}</div>
                         <div>{errors.sauce}</div>
                         <div>{errors.cheese}</div>

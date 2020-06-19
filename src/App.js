@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header.js';
+
 import Form from './components/Form.js';
 import formSchema from './validation/formSchema'
 import axios from 'axios';
@@ -9,6 +10,7 @@ import * as Yup from 'yup'
 import './App.css';
 
 const initialFormValues = {
+  name: '',
   size: '',
   sauce: {
     pesto: false,
@@ -30,6 +32,7 @@ const initialFormValues = {
 };
 
 const initialFormErrors = {
+  name: '',
   size: '',
   sauce: '',
   cheese: '',
@@ -117,7 +120,7 @@ const App = () => {
 
   useEffect(() => {
     getOrders()
-  }, []);
+  });
 
   useEffect(() => {
     formSchema.isValid(formValues).then(valid => {
@@ -129,14 +132,7 @@ const App = () => {
       <div className='uk-section'>
         <div className='uk-container'>
           <Switch>
-            <Route path="/">
-              <h1>Welcome to Lambda Eats</h1>
-              <Link to={'/order'}>
-                Place Order Online
-              </Link>
-            </Route>
-
-            <Route path="/order" component={Form}>
+            <Route path='/order'>
               <Form
                 values={formValues}
                 onInputChange={onInputChange}
@@ -145,6 +141,12 @@ const App = () => {
                 disabled={disabled}
                 errors={formErrors}
               />
+            </Route>
+            <Route path='/'>
+              <h1>Welcome to Lambda Eats</h1>
+              <Link to={'/order'}>
+                Place Order Online
+              </Link>
             </Route>
           </Switch>
         </div>
