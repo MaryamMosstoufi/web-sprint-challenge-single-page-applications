@@ -28,7 +28,6 @@ const formSchema = Yup.object().shape({
     //     .required("Please select at least one cheese."),
     instructions: Yup
         .string()
-        .min(10, "Please leave a more detailed instruction.")
 
 })
 
