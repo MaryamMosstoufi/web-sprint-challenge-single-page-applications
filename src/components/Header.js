@@ -5,7 +5,7 @@ export default function Header() {
         <div>
             <nav className='uk-navbar-container uk-navbar'>
                 <div className='uk-navbar-left'>
-                    <a class="uk-navbar-item uk-logo" href="#">Lambda Eats</a>
+                    <a className="uk-navbar-item uk-logo" href="#">Lambda Eats</a>
                     <ul className='uk-navbar-nav'>
                         <li><a href='#'>Menu</a></li>
                         <li><a href='#'>Order</a></li>
