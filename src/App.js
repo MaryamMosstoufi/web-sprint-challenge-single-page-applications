@@ -73,11 +73,19 @@ const App = () => {
   const [disabled, setDisabled] = useState(initialDisabled);
 
   const getOrders = () => {
+    // axios.get('https://reqres.in/')
+    //   .then(response => {
+    //     setOrders(response.data)
+    //     console.log(response.data)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
     return (orders)
   };
 
   const postNewOrder = newOrder => {
-    axios.post('https://reqres.in/', newOrder)
+    axios.post('https://reqres.in/api/orders', newOrder)
       .then(response => {
         setOrders([...orders, response.data])
         console.log(response.data);
