@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.uk-card {
+  text-align: left;
+}
+
+.uk-checkbox, .uk-radio {
+  margin-right: 10px;
+}
+
+.uk-textarea {
+  resize: none;
+}
